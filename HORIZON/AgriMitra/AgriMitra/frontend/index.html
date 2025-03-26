@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agri Mitra - Simplified</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="D:\AgriMitra\frontend\css\styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="image.jpg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
+            Agri Mitra
+        </a>
+        <div class="ml-auto">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="languageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Language
+                </button>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languageDropdown">
+                    <a class="dropdown-item" href="#" onclick="changeLanguage('en')">English</a>
+                    <a class="dropdown-item" href="#" onclick="changeLanguage('hi')">Hindi</a>
+                    <a class="dropdown-item" href="#" onclick="changeLanguage('bn')">Bengali</a>
+                    <a class="dropdown-item" href="#" onclick="changeLanguage('te')">Telugu</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="jumbotron">
+            <h1 class="display-4" id="jumboTitle">Agri Mitra</h1>
+            <p class="lead" id="jumboLead">Test Your Soil and Get Crop Recommendations</p>
+            <hr class="my-4">
+            <p id="jumboPara">Click the button below to simulate adding a soil sample and view analysis results.</p>
+            <button id="add-soil-btn" class="btn btn-primary btn-lg">Simulate Adding Soil</button>
+            <div id="loading-animation" class="mt-3" style="display: none;">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Fetching data...
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="cardHead">
+                Soil Analysis Results
+            </div>
+            <div class="card-body">
+                <div id="results-container">
+                    <!-- Results will be displayed here -->
+                </div>
+                <div id="crop-suggestion" class="mt-3" id="cropSuggestion">
+                    <!-- Suggested crop will be displayed here -->
+                </div>
+                <div id="soil-improvement" class="mt-3" id="soilImprovement">
+                    <!-- Soil improvement measures will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="D:\AgriMitra\frontend\js\script.js"></script>
+    <script>
+        const translations = {
+            en: {
+                navTitle: 'Agri Mitra',
+                jumboTitle: 'Agri Mitra',
+                jumboLead: 'Test Your Soil and Get Crop Recommendations',
+                jumboPara: 'Click the button below to simulate adding a soil sample and view analysis results.',
+                cardHead: 'Soil Analysis Results'
+            },
+            hi: {
+                navTitle: 'कृषि मित्र',
+                jumboTitle: 'कृषि मित्र',
+                jumboLead: 'अपनी मिट्टी का परीक्षण करें और फसल अनुशंसाएँ प्राप्त करें',
+                jumboPara: 'मिट्टी का नमूना जोड़ने और विश्लेषण परिणाम देखने के लिए नीचे दिए गए बटन पर क्लिक करें।',
+                cardHead: 'मिट्टी विश्लेषण परिणाम'
+            },
+            bn: {
+                navTitle: 'কৃষি মিত্র',
+                jumboTitle: 'কৃষি মিত্র',
+                jumboLead: 'মাটি পরীক্ষা করুন এবং ফসলের সুপারিশ পান',
+                jumboPara: 'মাটির নমুনা যোগ করতে এবং বিশ্লেষণের ফলাফল দেখতে নীচের বোতামে ক্লিক করুন।',
+                cardHead: 'মাটি বিশ্লেষণ ফলাফল'
+            },
+            te: {
+                navTitle: 'వ్యవసాయ మిత్ర',
+                jumboTitle: 'వ్యవసాయ మిత్ర',
+                jumboLead: 'మీ మట్టిని పరీక్షించి, పంట సిఫార్సులు పొందండి',
+                jumboPara: 'నేల నమూనాను జోడించడానికి మరియు విశ్లేషణ ఫలితాలను చూడటానికి క్రింది బటన్‌ను క్లిక్ చేయండి.',
+                cardHead: 'నేల విశ్లేషణ ఫలితాలు'
+            }
+        };
+
+        function changeLanguage(lang) {
+            const translatableElements = ['navTitle', 'jumboTitle', 'jumboLead', 'jumboPara', 'cardHead'];
+
+            translatableElements.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.textContent = translations[lang][id];
+                }
+            });
+        }
+    </script>
+</body>
+</html>
